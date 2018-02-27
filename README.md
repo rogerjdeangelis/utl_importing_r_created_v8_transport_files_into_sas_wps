@@ -1,0 +1,2 @@
+# utl_importing_r_created_v8_transport_files_into_sas_wps
+There appear to be two SAS bugs and one R bug when importing R created v8 transport files. Keywords: sas sql join merge big data analytics macros oracle teradata mysql sas communities stackoverflow statistics artificial inteligence AI Python R Java Javascript WPS Matlab SPSS Scala Perl C C# Excel MS Access JSON graphics maps NLP natural language processing machine learning igraph DOSUBL DOW loop stackoverfl SAS community.
