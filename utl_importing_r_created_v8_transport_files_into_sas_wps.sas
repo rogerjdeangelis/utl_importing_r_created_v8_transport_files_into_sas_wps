@@ -23,7 +23,7 @@ There appear to be two SAS bugs and one R bug when importing R created v8 transp
     2. Truncates strings to 200 bytes
        Transpoer file has the longer strings
 
-       Generated code with trucating length - works correctly id you edit the code
+       Generated code with trucating length - works correctly if you edit the code
 
        length CHR500 $ 200 ;
        input SPECIES $ASCII00010. SEPALLENGTH XPRTFLT8. SEPALWIDTH XPRTFLT8.
