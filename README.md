@@ -111,6 +111,21 @@ There appear to be two SAS bugs when importing R created v8 transport files.
           filespec='d:/xpt/have8.xpt' );
 
        * I turned off the format and informat statements
+       
+    * VANILLA R                                                                    
+                                                                                   
+    options validvarname=upcase;                                                   
+    libname sd1 "d:/sd1";                                                          
+    data sd1.iris;                                                                 
+      set sashelp.iris;                                                            
+      chr500=repeat('A',499);                                                      
+    run;quit;                                                                      
+                                                                                   
+    %utl_submit_r64('                                                              
+    library(haven);                                                                
+    iris<-read_sas("d:/sd1/iris.sas7bdat");                                        
+    write_xpt(iris, "d:/xpt/iris.xpt", version = 8, name = "long_dataset_name");   
+    ');                                                                            
 
     FIXES for macro XPT2LOC
     =====
