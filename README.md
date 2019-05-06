@@ -1,6 +1,6 @@
 # utl_importing_r_created_v8_transport_files_into_sas_wps
 There appear to be two SAS bugs when importing R created v8 transport files. 
-    There appear to be two SAS bugs and one R bug when importing R created v8 transport files
+    
 
      github
      https://github.com/rogerjdeangelis/utl_importing_r_created_v8_transport_files_into_sas_wps
