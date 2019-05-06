@@ -1,5 +1,5 @@
 # utl_importing_r_created_v8_transport_files_into_sas_wps
-There appear to be two SAS bugs and one R bug when importing R created v8 transport files. Keywords: sas sql join merge big data analytics macros oracle teradata mysql sas communities stackoverflow statistics artificial inteligence AI Python R Java Javascript WPS Matlab SPSS Scala Perl C C# Excel MS Access JSON graphics maps NLP natural language processing machine learning igraph DOSUBL DOW loop stackoverfl SAS community.
+There appear to be two SAS bugs when importing R created v8 transport files. 
     There appear to be two SAS bugs and one R bug when importing R created v8 transport files
 
      github
@@ -25,22 +25,30 @@ There appear to be two SAS bugs and one R bug when importing R created v8 transp
         2. Truncates strings to 200 bytes
            Transport file has the longer strings
 
-           Generated code with trucating length - works correctly if you edit the code
+           Generated code with trucating length - works correctly if you edit sas xpt2loc macro
 
            length CHR500 $ 200 ;
            input SPECIES $ASCII00010. SEPALLENGTH XPRTFLT8. SEPALWIDTH XPRTFLT8.
                PETALLENGTH XPRTFLT8. PETALWIDTH XPRTFLT8. CHR500 $ASCII00200. @@;
 
-        R bug
-
-        1. Datset name is hardcoded to 'DATASET'
-
-        No issue with V5 transport process,
-
-
 
     INPUT   ( has long variable names and long character variable 500 bytes)
     =====
+
+    *                _              _       _
+     _ __ ___   __ _| | _____    __| | __ _| |_ __ _
+    | '_ ` _ \ / _` | |/ / _ \  / _` |/ _` | __/ _` |
+    | | | | | | (_| |   <  __/ | (_| | (_| | || (_| |
+    |_| |_| |_|\__,_|_|\_\___|  \__,_|\__,_|\__\__,_|
+
+    ;
+
+    options validvarname=upcase;
+    libname sd1 "d:/sd1";
+    data sd1.have;
+      set sashelp.iris;
+      chr500=repeat('A',499);
+    run;quit;
 
     SD1.HAVE total obs=150
 
@@ -112,7 +120,7 @@ There appear to be two SAS bugs and one R bug when importing R created v8 transp
         298  /* put 'format' +1 nliteral +1 format ';'; */
         310 /* put 'informat' +1 nliteral +1 informat ';';*/
 
-      Edit generated code
+      Edit generated code (only if you want 
 
       data work.DATASET ;
       infile 'd:/xpt/fshr8.xpt' recfm=n lrecl=32767
@@ -163,21 +171,6 @@ There appear to be two SAS bugs and one R bug when importing R created v8 transp
        5    PETALWIDTH     Num       8    Petal Width (mm)
        6    CHR500         Char    500
        */
-
-    *                _              _       _
-     _ __ ___   __ _| | _____    __| | __ _| |_ __ _
-    | '_ ` _ \ / _` | |/ / _ \  / _` |/ _` | __/ _` |
-    | | | | | | (_| |   <  __/ | (_| | (_| | || (_| |
-    |_| |_| |_|\__,_|_|\_\___|  \__,_|\__,_|\__\__,_|
-
-    ;
-
-    options validvarname=upcase;
-    libname sd1 "d:/sd1";
-    data sd1.have;
-      set sashelp.iris;
-      chr500=repeat('A',499);
-    run;quit;
 
     *          _       _   _
      ___  ___ | |_   _| |_(_) ___  _ __
