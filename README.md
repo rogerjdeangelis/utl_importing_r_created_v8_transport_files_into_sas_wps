@@ -107,7 +107,7 @@ There appear to be two SAS bugs when importing R created v8 transport files.
       * version 8;
       %utlopts;
       %xpt2loc(libref=work,
-          memlist=DATASET,
+          memlist=_all_,
           filespec='d:/xpt/have8.xpt' );
 
        * I turned off the format and informat statements
@@ -125,8 +125,10 @@ There appear to be two SAS bugs when importing R created v8 transport files.
     library(haven);                                                                
     iris<-read_sas("d:/sd1/iris.sas7bdat");                                        
     write_xpt(iris, "d:/xpt/iris.xpt", version = 8, name = "long_dataset_name");   
-    ');                                                                            
-
+    ');      
+     %xpt2loc(libref=work,
+          memlist=_all_,
+          filespec='d:/xpt/iris.xpt' );
     FIXES for macro XPT2LOC
     =====
 
